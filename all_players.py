@@ -6,7 +6,7 @@
 #    By: ccottet <ccottet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 13:53:57 by ccottet           #+#    #+#              #
-#    Updated: 2024/06/04 10:01:44 by ccottet          ###   ########.fr        #
+#    Updated: 2024/06/04 15:14:56 by ccottet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,8 @@ from sklearn.linear_model import LinearRegression
 
 # Importation des données
 
-all_training = pd.read_csv("/Users/cosaph/Desktop/Stage-2A/Coralie/training_player/Export Servette Pro - all training.csv")
-match_played = pd.read_csv("/Users/cosaph/Desktop/Stage-2A/Coralie/Match_player/Export Servette Pro - all games.csv")
+all_training = pd.read_csv("/Users/cosaph/Desktop/fc servette/Coralie/Export Servette Pro - all training.csv")
+match_played = pd.read_csv("/Users/cosaph/Desktop/fc servette/Coralie/Match_player/Export Servette Pro - all games.csv")
 
 nb_joueur = all_training['PLAYER_NAME'].nunique()
 
@@ -362,7 +362,7 @@ filtered_data = filtered_data.merge(std_distance_date_all, on='DATE', suffixes=(
 filtered_data['z_score'] = (filtered_data['Distance m/min'] - filtered_data['Distance m/min_mean']) / filtered_data['Distance m/min_std']
 
 # Filter data for a specific player (D.Kutesa in this example)
-player_data = filtered_data[filtered_data['PLAYER_NAME'] == 'A.Antunes']
+player_data = filtered_data[filtered_data['PLAYER_NAME'] == player]
 
 # month
 
@@ -496,8 +496,8 @@ user_input = player
 
 # Extraction du nom de famille
 last_name = user_input.split('.')[-1]
-old_path = '/Users/cosaph/Desktop/Stage-2A/Coralie/image/1_Antunes_01583.png'  # Chemin vers l'image du joueur
-old_text = "Antunes_01583"
+old_path = '/Users/cosaph/Desktop/fc servette/Coralie/image/1_Antunes.png'  # Chemin vers l'image du joueur
+old_text = "Antunes"
 image_path = old_path.replace(old_text, last_name)
 
 ############################################################################################################
@@ -507,7 +507,7 @@ image_path = old_path.replace(old_text, last_name)
 ############################################################################################################
 
 player_image = Image.open(image_path)
-logo = Image.open('/Users/cosaph/Desktop/Stage-2A/logo.png')
+logo = Image.open('/Users/cosaph/Desktop/fc servette/logo.png')
 comparaison_performance = Image.open('comparaison_performance.png')
 # a la place de facecolor = black je veux l'image banniere.jpeg
 fig = plt.figure(figsize=(18, 12), facecolor='black')
