@@ -6,7 +6,7 @@
 #    By: ccottet <ccottet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 13:53:57 by ccottet           #+#    #+#              #
-#    Updated: 2024/06/04 15:14:56 by ccottet          ###   ########.fr        #
+#    Updated: 2024/06/05 14:03:46 by ccottet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -507,7 +507,7 @@ image_path = old_path.replace(old_text, last_name)
 ############################################################################################################
 
 player_image = Image.open(image_path)
-logo = Image.open('/Users/cosaph/Desktop/fc servette/logo.png')
+logo = Image.open('/Users/cosaph/Desktop/fc servette/pictures/logo.png')
 comparaison_performance = Image.open('comparaison_performance.png')
 # a la place de facecolor = black je veux l'image banniere.jpeg
 fig = plt.figure(figsize=(18, 12), facecolor='black')
