@@ -6,7 +6,7 @@
 #    By: ccottet <ccottet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/06 10:23:28 by ccottet           #+#    #+#              #
-#    Updated: 2024/06/06 15:27:39 by ccottet          ###   ########.fr        #
+#    Updated: 2024/06/06 15:29:08 by ccottet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -165,7 +165,7 @@ if performance_type == "Individual":
     if isinstance(attendance_player, pd.Series):
         attendance_player = attendance_player.reindex(['PRESENT', 'ADAPTE', 'BLESSE', 'READAPTATION', 'REPOS', 'EN SOIN', 'MALADE', 'ABSENT'], fill_value=0)
 
-    # Calculer la somme des présences
+
     attendance_player_sum = 0
     for col in ['PRESENT', 'ADAPTE', 'BLESSE', 'READAPTATION', 'REPOS', 'EN SOIN', 'MALADE', 'ABSENT']:
         try:
@@ -173,7 +173,6 @@ if performance_type == "Individual":
         except (KeyError, TypeError):
             print(f"La colonne '{col}' est absente dans les données d'attendance pour le joueur {player}.")
 
-    # Récupérer le nombre de présences
         try:
             present_player = attendance_player['PRESENT']
         except (KeyError, TypeError):
@@ -258,7 +257,7 @@ if performance_type == "Individual":
     ############################################################################################################
     # --------------------------------------- Z-SCORE ET DISTANCE -------------------------------------------- #
 
-    # Load the data from the uploaded CSV file
+
     data = match_played
     # Filter data to include only rows where both Distance totale and Distance m/min are not NaN
     filtered_data = data.dropna(subset=['Distance totale', 'Distance m/min'])
@@ -668,10 +667,8 @@ if performance_type == "Collective":
 
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
-    # Calcul du z-score total en ignorant les valeurs nulles
     df['Total_z'] = df[['Max_speed_z', 'Accélération max_z', 'Distance_m/min_z', 'Attendance_z']].sum(axis=1, skipna=True)
-    
-    # Trier les joueurs par leur z-score total et faire un bar plot
+
     df = df.sort_values('Total_z', ascending=False)
 
     plt.figure(figsize=(10, 10))
